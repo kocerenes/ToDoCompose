@@ -1,6 +1,7 @@
 package com.enesk.todocompose.data.local
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.enesk.todocompose.data.local.entities.ToDoTaskEntity
 
 @Database(
@@ -8,6 +9,6 @@ import com.enesk.todocompose.data.local.entities.ToDoTaskEntity
     version = 1,
     exportSchema = false
 )
-abstract class ToDoTaskDatabase {
+abstract class ToDoTaskDatabase : RoomDatabase() {
     abstract fun toDoDao(): ToDoDao
 }

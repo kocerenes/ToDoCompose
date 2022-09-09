@@ -4,6 +4,7 @@
     package="com.enesk.todocompose">
 
     <application
+        android:name=".di.ToDoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
