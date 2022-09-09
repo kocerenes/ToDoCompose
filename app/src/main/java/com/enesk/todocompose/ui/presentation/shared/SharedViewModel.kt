@@ -7,21 +7,20 @@ import com.enesk.todocompose.domain.repository.ToDoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _allTasks = MutableStateFlow<List<ToDoTaskEntity>>(emptyList())
-    val allTasks : StateFlow<List<ToDoTaskEntity>> = _allTasks
+    val allTasks: StateFlow<List<ToDoTaskEntity>> = _allTasks
 
-    fun getAllTasks(){
+    fun getAllTasks() {
         viewModelScope.launch {
-            repository.getAllTasks.collect{
+            repository.getAllTasks.collect {
                 _allTasks.value = it
             }
         }
