@@ -1,4 +1,4 @@
-package com.enesk.todocompose.data.local.entities
+package com.enesk.todocompose.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

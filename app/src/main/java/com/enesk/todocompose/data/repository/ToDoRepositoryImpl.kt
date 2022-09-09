@@ -1,7 +1,7 @@
 package com.enesk.todocompose.data.repository
 
 import com.enesk.todocompose.data.local.ToDoDao
-import com.enesk.todocompose.data.local.entities.ToDoTaskEntity
+import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

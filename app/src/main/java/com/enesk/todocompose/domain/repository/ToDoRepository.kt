@@ -1,6 +1,6 @@
 package com.enesk.todocompose.domain.repository
 
-import com.enesk.todocompose.data.local.entities.ToDoTaskEntity
+import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import kotlinx.coroutines.flow.Flow
 
 interface ToDoRepository {
