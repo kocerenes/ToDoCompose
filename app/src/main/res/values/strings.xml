@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ToDoCompose</string>
+
+    <!-- List Screen -->
+    <string name="fab_button_description">ekleme butonu</string>
+
 </resources>
