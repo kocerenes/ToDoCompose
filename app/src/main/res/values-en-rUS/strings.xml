@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDoCompose</string>
+
+    <!-- List Screen -->
+    <string name="fab_button_description">add button</string>
+
+    <!-- Top App Bar -->
+    <string name="top_app_bar_name">Tasks</string>
+    <string name="search_icon_description">Search Tasks</string>
+    <string name="filter_list_icon_description">Sort Tasks</string>
+    <string name="delete_all_action">Delete All</string>
+    <string name="delete_all_icon_description">Delete All Icon</string>
+</resources>

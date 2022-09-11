@@ -6,5 +6,8 @@
 
     <!-- Top App Bar -->
     <string name="top_app_bar_name">Görevler</string>
-
+    <string name="search_icon_description">Görevleri Ara</string>
+    <string name="filter_list_icon_description">Görevleri Sırala</string>
+    <string name="delete_all_action">Hepsini Sil</string>
+    <string name="delete_all_icon_description">Hepsini Sil Iconu</string>
 </resources>
