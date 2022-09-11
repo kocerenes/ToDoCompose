@@ -4,4 +4,7 @@
     <!-- List Screen -->
     <string name="fab_button_description">ekleme butonu</string>
 
+    <!-- Top App Bar -->
+    <string name="top_app_bar_name">Görevler</string>
+
 </resources>

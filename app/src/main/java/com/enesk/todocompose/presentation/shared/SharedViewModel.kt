@@ -1,4 +1,4 @@
-package com.enesk.todocompose.ui.presentation.shared
+package com.enesk.todocompose.presentation.shared
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

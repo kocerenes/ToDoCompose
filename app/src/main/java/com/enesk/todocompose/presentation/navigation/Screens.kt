@@ -1,4 +1,4 @@
-package com.enesk.todocompose.ui.presentation.navigation
+package com.enesk.todocompose.presentation.navigation
 
 import androidx.navigation.NavHostController
 import com.enesk.todocompose.util.Action

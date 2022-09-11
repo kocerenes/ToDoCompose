@@ -1,4 +1,4 @@
-package com.enesk.todocompose.ui.presentation.navigation.destinations
+package com.enesk.todocompose.presentation.navigation.destinations
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType

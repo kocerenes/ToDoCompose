@@ -1,4 +1,4 @@
-package com.enesk.todocompose.ui.presentation.screens.list
+package com.enesk.todocompose.presentation.screens.list
 
 import android.annotation.SuppressLint
 import androidx.compose.material.FloatingActionButton
