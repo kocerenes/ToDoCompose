@@ -8,21 +8,32 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.R
 import com.enesk.todocompose.presentation.components.ListAppBar
+import com.enesk.todocompose.presentation.shared.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.fabBackgroundColor
+import com.enesk.todocompose.util.SearchAppBarState
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ListScreen(
-    navigateToTaskScreen: (taskId: Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit,
+    sharedViewModel: SharedViewModel
 ) {
+    val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
+    val searchTextState: String by sharedViewModel.searchTextState
+
     Scaffold(
         topBar = {
-            ListAppBar()
+            ListAppBar(
+                sharedViewModel = sharedViewModel,
+                searchAppBarState = searchAppBarState,
+                searchTextState = searchTextState
+            )
         },
         content = {},
         floatingActionButton = {
@@ -48,10 +59,4 @@ fun FabButtonInListScreen(
         )
 
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ListScreenPreview() {
-    ListScreen(navigateToTaskScreen = {})
 }

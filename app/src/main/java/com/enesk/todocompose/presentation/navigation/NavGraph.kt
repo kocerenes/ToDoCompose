@@ -6,11 +6,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.enesk.todocompose.presentation.navigation.destinations.listComposable
 import com.enesk.todocompose.presentation.navigation.destinations.taskComposable
+import com.enesk.todocompose.presentation.shared.SharedViewModel
 import com.enesk.todocompose.util.Constants.LIST_SCREEN
 
 @Composable
 fun SetupNavGraph(
-    navController:NavHostController
+    navController:NavHostController,
+    sharedViewModel: SharedViewModel
 ) {
     val screen = remember(navController){
         Screens(navController = navController)
@@ -20,7 +22,12 @@ fun SetupNavGraph(
         navController = navController,
         startDestination = LIST_SCREEN
     ){
-        listComposable(screen.task)
-        taskComposable(screen.list)
+        listComposable(
+            navigateToTaskScreen = screen.task,
+            sharedViewModel = sharedViewModel
+        )
+        taskComposable(
+            navigateToListScreen = screen.list,
+        )
     }
 }

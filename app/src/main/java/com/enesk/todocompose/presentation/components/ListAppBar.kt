@@ -34,6 +34,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.R
+import com.enesk.todocompose.presentation.shared.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.MEDIUM_PADDING
 import com.enesk.todocompose.presentation.ui.theme.TOP_APP_BAR_HEIGHT
 import com.enesk.todocompose.presentation.ui.theme.TopBarContentColor
@@ -41,21 +42,40 @@ import com.enesk.todocompose.presentation.ui.theme.Typography
 import com.enesk.todocompose.presentation.ui.theme.topAppBarBackgroundColor
 import com.enesk.todocompose.presentation.ui.theme.topAppBarContentColor
 import com.enesk.todocompose.util.Priority
+import com.enesk.todocompose.util.SearchAppBarState
 
 @Composable
-fun ListAppBar() {
-    /*DefaultListAppBar(
-        onSearchClicked = { },
-        onSortClicked = { },
-        onDeleteClicked = { }
-    )*/
+fun ListAppBar(
+    sharedViewModel: SharedViewModel,
+    searchAppBarState: SearchAppBarState,
+    searchTextState: String
+) {
+    when (searchAppBarState) {
+        SearchAppBarState.CLOSED -> {
+            DefaultListAppBar(
+                onSearchClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED
+                },
+                onSortClicked = { },
+                onDeleteClicked = { }
+            )
+        }
+        else -> {
+            SearchAppBar(
+                text = searchTextState,
+                onTextChange = { newText ->
+                    sharedViewModel.searchTextState.value = newText
+                },
+                onCloseClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
+                    sharedViewModel.searchTextState.value = ""
+                },
+                onSearchClicked = { }
+            )
+        }
+    }
 
-    SearchAppBar(
-        text = "",
-        onTextChange = { },
-        onCloseClicked = { },
-        onSearchClicked = { }
-    )
+
 }
 
 @Composable
