@@ -43,6 +43,7 @@ import com.enesk.todocompose.presentation.ui.theme.topAppBarBackgroundColor
 import com.enesk.todocompose.presentation.ui.theme.topAppBarContentColor
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.SearchAppBarState
+import com.enesk.todocompose.util.TrailingIconState
 
 @Composable
 fun ListAppBar(
@@ -232,6 +233,10 @@ fun SearchAppBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit
 ) {
+    var trailingIconState by remember {
+        mutableStateOf(TrailingIconState.READY_TO_DELETE)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -275,7 +280,20 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        onCloseClicked()
+                        when (trailingIconState) {
+                            TrailingIconState.READY_TO_DELETE -> {
+                                onTextChange("")
+                                trailingIconState = TrailingIconState.READY_TO_CLOSE
+                            }
+                            TrailingIconState.READY_TO_CLOSE -> {
+                                if (text.isNotEmpty()){
+                                    onTextChange("")
+                                }else{
+                                    onCloseClicked()
+                                    trailingIconState = TrailingIconState.READY_TO_DELETE
+                                }
+                            }
+                        }
                     }
                 ) {
                     Icon(
