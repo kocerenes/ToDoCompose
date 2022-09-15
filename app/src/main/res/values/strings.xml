@@ -10,4 +10,7 @@
     <string name="filter_list_icon_description">Görevleri Sırala</string>
     <string name="delete_all_action">Hepsini Sil</string>
     <string name="delete_all_icon_description">Hepsini Sil Iconu</string>
+    <string name="search_placeholder">Ara</string>
+    <string name="search_leading_icon_description">Arama Iconu</string>
+    <string name="close_trailing_icon_description">Kapatma Iconu</string>
 </resources>

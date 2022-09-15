@@ -11,4 +11,7 @@
     <string name="filter_list_icon_description">Sort Tasks</string>
     <string name="delete_all_action">Delete All</string>
     <string name="delete_all_icon_description">Delete All Icon</string>
+    <string name="search_placeholder">Search</string>
+    <string name="search_leading_icon_description">Search Icon</string>
+    <string name="close_trailing_icon_description">Close Icon</string>
 </resources>
