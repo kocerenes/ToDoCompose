@@ -11,10 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.R
 import com.enesk.todocompose.presentation.components.ListAppBar
-import com.enesk.todocompose.presentation.shared.SharedViewModel
+import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.fabBackgroundColor
 import com.enesk.todocompose.util.SearchAppBarState
 
@@ -35,7 +34,9 @@ fun ListScreen(
                 searchTextState = searchTextState
             )
         },
-        content = {},
+        content = {
+
+        },
         floatingActionButton = {
             FabButtonInListScreen(onFabClicked = navigateToTaskScreen)
         }

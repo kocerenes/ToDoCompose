@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.enesk.todocompose.presentation.navigation.SetupNavGraph
-import com.enesk.todocompose.presentation.shared.SharedViewModel
+import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.ToDoComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 

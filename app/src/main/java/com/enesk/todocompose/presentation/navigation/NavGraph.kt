@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.enesk.todocompose.presentation.navigation.destinations.listComposable
 import com.enesk.todocompose.presentation.navigation.destinations.taskComposable
-import com.enesk.todocompose.presentation.shared.SharedViewModel
+import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.util.Constants.LIST_SCREEN
 
 @Composable

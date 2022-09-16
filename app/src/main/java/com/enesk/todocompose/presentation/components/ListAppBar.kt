@@ -34,13 +34,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.R
-import com.enesk.todocompose.presentation.shared.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.MEDIUM_PADDING
 import com.enesk.todocompose.presentation.ui.theme.TOP_APP_BAR_HEIGHT
 import com.enesk.todocompose.presentation.ui.theme.TopBarContentColor
 import com.enesk.todocompose.presentation.ui.theme.Typography
 import com.enesk.todocompose.presentation.ui.theme.topAppBarBackgroundColor
 import com.enesk.todocompose.presentation.ui.theme.topAppBarContentColor
+import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.SearchAppBarState
 import com.enesk.todocompose.util.TrailingIconState
@@ -282,13 +282,17 @@ fun SearchAppBar(
                     onClick = {
                         when (trailingIconState) {
                             TrailingIconState.READY_TO_DELETE -> {
-                                onTextChange("")
-                                trailingIconState = TrailingIconState.READY_TO_CLOSE
+                                if (text.isEmpty()) {
+                                    onCloseClicked()
+                                } else {
+                                    onTextChange("")
+                                    trailingIconState = TrailingIconState.READY_TO_CLOSE
+                                }
                             }
                             TrailingIconState.READY_TO_CLOSE -> {
-                                if (text.isNotEmpty()){
+                                if (text.isNotEmpty()) {
                                     onTextChange("")
-                                }else{
+                                } else {
                                     onCloseClicked()
                                     trailingIconState = TrailingIconState.READY_TO_DELETE
                                 }

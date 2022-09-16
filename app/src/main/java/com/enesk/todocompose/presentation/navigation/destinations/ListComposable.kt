@@ -5,7 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.enesk.todocompose.presentation.screens.list.ListScreen
-import com.enesk.todocompose.presentation.shared.SharedViewModel
+import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.util.Constants.LIST_ARGUMENT_KEY
 import com.enesk.todocompose.util.Constants.LIST_SCREEN
 

@@ -1,4 +1,4 @@
-package com.enesk.todocompose.presentation.shared
+package com.enesk.todocompose.presentation.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
