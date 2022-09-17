@@ -22,5 +22,7 @@ val DOUBLE_EXTRA_SMALL_TEXT_FONT_SIZE = 10.sp
 
 val DEFAULT_TEXT_FONT_SIZE = 16.sp
 
-val PRIORITY_INDICATOR_SIZE = 16.dp
+val PRIORITY_INDICATOR_SIZE = 20.dp
 val TOP_APP_BAR_HEIGHT = 56.dp //for material design best used
+
+val TASK_ITEM_ELEVATION = 2.dp
