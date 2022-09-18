@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.enesk.todocompose.presentation.navigation.SetupNavGraph
@@ -11,6 +12,7 @@ import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.ToDoComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalMaterialApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     

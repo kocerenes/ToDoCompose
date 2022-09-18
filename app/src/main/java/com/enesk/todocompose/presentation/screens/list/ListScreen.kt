@@ -1,6 +1,8 @@
 package com.enesk.todocompose.presentation.screens.list
 
 import android.annotation.SuppressLint
+import android.util.Log
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -8,6 +10,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -16,12 +20,19 @@ import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.presentation.ui.theme.fabBackgroundColor
 import com.enesk.todocompose.util.SearchAppBarState
 
+@ExperimentalMaterialApi
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ListScreen(
     navigateToTaskScreen: (taskId: Int) -> Unit,
     sharedViewModel: SharedViewModel
 ) {
+
+    LaunchedEffect(key1 = true){
+        sharedViewModel.getAllTasks()
+    }
+
+    val allTasks by sharedViewModel.allTasks.collectAsState()
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
 
@@ -34,7 +45,10 @@ fun ListScreen(
             )
         },
         content = {
-
+            ListContent(
+                tasks = allTasks,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
         },
         floatingActionButton = {
             FabButtonInListScreen(onFabClicked = navigateToTaskScreen)
