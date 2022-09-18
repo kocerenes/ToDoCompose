@@ -14,4 +14,8 @@
     <string name="search_placeholder">Search</string>
     <string name="search_leading_icon_description">Search Icon</string>
     <string name="close_trailing_icon_description">Close Icon</string>
+
+    <!-- Empty Screen -->
+    <string name="sad_icon_description">Sad face Icon for empty</string>
+    <string name="empty_content">No Tasks found.</string>
 </resources>

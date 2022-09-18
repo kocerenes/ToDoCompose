@@ -9,8 +9,12 @@
     <string name="search_icon_description">Görevleri Ara</string>
     <string name="filter_list_icon_description">Görevleri Sırala</string>
     <string name="delete_all_action">Hepsini Sil</string>
-    <string name="delete_all_icon_description">Hepsini Sil Iconu</string>
+    <string name="delete_all_icon_description">Hepsini Sil ikonu</string>
     <string name="search_placeholder">Ara</string>
-    <string name="search_leading_icon_description">Arama Iconu</string>
-    <string name="close_trailing_icon_description">Kapatma Iconu</string>
+    <string name="search_leading_icon_description">Arama ikonu</string>
+    <string name="close_trailing_icon_description">Kapatma ikonu</string>
+
+    <!-- Empty Screen -->
+    <string name="sad_icon_description">Üzgün surat ikonu</string>
+    <string name="empty_content">Hiç Görev Bulunmamakta.</string>
 </resources>
