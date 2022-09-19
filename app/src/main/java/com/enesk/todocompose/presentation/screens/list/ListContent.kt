@@ -28,20 +28,23 @@ import com.enesk.todocompose.presentation.ui.theme.TASK_ITEM_ELEVATION
 import com.enesk.todocompose.presentation.ui.theme.taskItemBackgroundColor
 import com.enesk.todocompose.presentation.ui.theme.taskItemTextColor
 import com.enesk.todocompose.util.Priority
+import com.enesk.todocompose.util.RequestState
 
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
-    tasks: List<ToDoTaskEntity>,
+    tasks: RequestState<List<ToDoTaskEntity>>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks.isEmpty()) {
-        EmptyContent()
-    } else {
-        DisplayTasks(
-            tasks = tasks,
-            navigateToTaskScreen = navigateToTaskScreen
-        )
+    if (tasks is RequestState.Success){
+        if (tasks.data.isEmpty()) {
+            EmptyContent()
+        } else {
+            DisplayTasks(
+                tasks = tasks.data,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
     }
 }
 
