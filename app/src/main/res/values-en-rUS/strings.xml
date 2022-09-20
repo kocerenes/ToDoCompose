@@ -5,7 +5,7 @@
     <!-- List Screen -->
     <string name="fab_button_description">add button</string>
 
-    <!-- Top App Bar -->
+    <!-- List App Bar -->
     <string name="top_app_bar_name">Tasks</string>
     <string name="search_icon_description">Search Tasks</string>
     <string name="filter_list_icon_description">Sort Tasks</string>
@@ -18,4 +18,9 @@
     <!-- Empty Screen -->
     <string name="sad_icon_description">Sad face Icon for empty</string>
     <string name="empty_content">No Tasks found.</string>
+
+    <!-- New Task App Bar -->
+    <string name="new_task_app_bar_title">Add Task</string>
+    <string name="back_arrow_icon_description">Back arrow</string>
+    <string name="add_icon_description">Add task</string>
 </resources>
