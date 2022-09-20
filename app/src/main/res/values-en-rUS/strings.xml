@@ -22,5 +22,8 @@
     <!-- New Task App Bar -->
     <string name="new_task_app_bar_title">Add Task</string>
     <string name="back_arrow_icon_description">Back arrow</string>
-    <string name="add_icon_description">Add task</string>
+    <string name="add_icon_description">Add task icon</string>
+    <string name="close_icon_description">Close icon</string>
+    <string name="delete_icon_description">Delete icon</string>
+    <string name="update_icon_description">Update icon</string>
 </resources>

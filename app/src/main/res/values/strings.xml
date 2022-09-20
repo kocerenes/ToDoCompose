@@ -17,8 +17,12 @@
     <!-- Empty Screen -->
     <string name="sad_icon_description">Üzgün surat ikonu</string>
     <string name="empty_content">Hiç Görev Bulunmamakta.</string>
+
     <!-- New Task App Bar -->
     <string name="new_task_app_bar_title">Görev Ekle</string>
     <string name="back_arrow_icon_description">Geri ok ikonu</string>
     <string name="add_icon_description">Görev ekleme ikonu</string>
+    <string name="close_icon_description">Kapatma ikonu</string>
+    <string name="delete_icon_description">Silme ikonu</string>
+    <string name="update_icon_description">Güncelleme ikonu</string>
 </resources>
