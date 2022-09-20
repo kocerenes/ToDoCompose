@@ -30,6 +30,7 @@ fun SetupNavGraph(
         )
         taskComposable(
             navigateToListScreen = screen.list,
+            sharedViewModel = sharedViewModel
         )
     }
 }

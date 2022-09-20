@@ -23,9 +23,17 @@ import com.enesk.todocompose.util.Priority
 
 @Composable
 fun TaskAppBar(
+    selectedTask: ToDoTaskEntity?,
     navigateToListScreen: (Action) -> Unit
 ) {
-    NewTaskAppBar(navigateToListScreen = navigateToListScreen)
+    if (selectedTask == null) {
+        NewTaskAppBar(navigateToListScreen = navigateToListScreen)
+    } else {
+        ExistingTaskAppBar(
+            selectedTask = selectedTask,
+            navigateToListScreen = navigateToListScreen
+        )
+    }
 }
 
 @Composable
@@ -171,7 +179,7 @@ fun ExistingAppBarPreviewEnglish() {
             "Some ranom text",
             priority = Priority.LOW
         ),
-        navigateToListScreen ={}
+        navigateToListScreen = {}
     )
 }
 
@@ -185,6 +193,6 @@ fun ExistingAppBarPreviewTurkish() {
             "Some ranom text",
             priority = Priority.LOW
         ),
-        navigateToListScreen ={}
+        navigateToListScreen = {}
     )
 }
