@@ -25,4 +25,7 @@
     <string name="close_icon_description">Kapatma ikonu</string>
     <string name="delete_icon_description">Silme ikonu</string>
     <string name="update_icon_description">Güncelleme ikonu</string>
+
+    <!-- New Task Screen -->
+    <string name="drop_down_arrow_icon_description">Açılır menü ok ikonu</string>
 </resources>

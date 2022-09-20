@@ -26,4 +26,7 @@
     <string name="close_icon_description">Close icon</string>
     <string name="delete_icon_description">Delete icon</string>
     <string name="update_icon_description">Update icon</string>
+
+    <!-- New Task Screen -->
+    <string name="drop_down_arrow_icon_description">Drop-Down Arrow Icon</string>
 </resources>
