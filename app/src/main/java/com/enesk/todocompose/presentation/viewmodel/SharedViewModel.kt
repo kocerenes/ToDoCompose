@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
+import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.RequestState
 import com.enesk.todocompose.util.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,12 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
 ) : ViewModel() {
+
+    //values for update task
+    val id: MutableState<Int> = mutableStateOf(0)
+    val title: MutableState<String> = mutableStateOf("")
+    val description: MutableState<String> = mutableStateOf("")
+    val priority: MutableState<Priority> = mutableStateOf(Priority.LOW)
 
     val searchAppBarState: MutableState<SearchAppBarState> =
         mutableStateOf(SearchAppBarState.CLOSED)
@@ -47,6 +54,20 @@ class SharedViewModel @Inject constructor(
             repository.getSelectedTask(taskId = taskId).collect {
                 _selectedTask.value = it
             }
+        }
+    }
+
+    fun updateTaskFields(selectedTask: ToDoTaskEntity?){
+        if (selectedTask != null){
+            id.value = selectedTask.id
+            title.value = selectedTask.title
+            description.value = selectedTask.description
+            priority.value = selectedTask.priority
+        }else{
+            id.value = 0
+            title.value = ""
+            description.value = ""
+            priority.value = Priority.LOW
         }
     }
 
