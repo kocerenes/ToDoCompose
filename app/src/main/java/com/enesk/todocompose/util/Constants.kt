@@ -12,4 +12,7 @@ object Constants {
     // navigation keys
     const val LIST_ARGUMENT_KEY = "action"
     const val TASK_ARGUMENT_KEY = "taskId"
+
+    //limitation
+    const val MAX_TITLE_LENGTH = 20
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
+import com.enesk.todocompose.util.Constants.MAX_TITLE_LENGTH
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.RequestState
 import com.enesk.todocompose.util.SearchAppBarState
@@ -71,4 +72,10 @@ class SharedViewModel @Inject constructor(
         }
     }
 
+    fun updateTitle(newTitle: String)
+    {
+        if(newTitle.length < MAX_TITLE_LENGTH){
+            title.value = newTitle
+        }
+    }
 }
