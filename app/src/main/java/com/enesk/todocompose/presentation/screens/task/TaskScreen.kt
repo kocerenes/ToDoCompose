@@ -5,6 +5,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.util.Action
+import com.enesk.todocompose.util.Priority
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -19,6 +20,15 @@ fun TaskScreen(
                 navigateToListScreen = navigateToListScreen
             )
         },
-        content = {}
+        content = {
+            TaskContent(
+                title = "",
+                onTitleChange = {},
+                description = "",
+                onDescriptionChange = {},
+                priority = Priority.MEDIUM,
+                onPrioritySelected = {}
+            )
+        }
     )
 }

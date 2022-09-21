@@ -29,4 +29,6 @@
 
     <!-- New Task Screen -->
     <string name="drop_down_arrow_icon_description">Drop-Down Arrow Icon</string>
+    <string name="title_text_field_label">Title</string>
+    <string name="description_text_field_label">Description</string>
 </resources>
