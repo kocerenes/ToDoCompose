@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.enesk.todocompose.presentation.ui.theme.MEDIUM_PADDING
+import com.enesk.todocompose.presentation.ui.theme.LARGE_PADDING
 import com.enesk.todocompose.presentation.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.enesk.todocompose.presentation.ui.theme.Typography
 import com.enesk.todocompose.util.Priority
@@ -25,7 +25,7 @@ fun PriorityItem(priority: Priority) {
         }
         Text(
             modifier = Modifier
-                .padding(start = MEDIUM_PADDING),
+                .padding(start = LARGE_PADDING),
             text = priority.name,
             style = Typography.subtitle1,
             color = MaterialTheme.colors.onSurface

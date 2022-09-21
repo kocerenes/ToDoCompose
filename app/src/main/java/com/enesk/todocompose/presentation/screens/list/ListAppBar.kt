@@ -35,7 +35,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.R
 import com.enesk.todocompose.presentation.components.PriorityItem
-import com.enesk.todocompose.presentation.ui.theme.MEDIUM_PADDING
+import com.enesk.todocompose.presentation.ui.theme.LARGE_PADDING
 import com.enesk.todocompose.presentation.ui.theme.TOP_APP_BAR_HEIGHT
 import com.enesk.todocompose.presentation.ui.theme.TopBarContentColor
 import com.enesk.todocompose.presentation.ui.theme.Typography
@@ -218,7 +218,7 @@ fun DeleteAllAction(
                 }
             ) {
                 Text(
-                    modifier = Modifier.padding(start = MEDIUM_PADDING),
+                    modifier = Modifier.padding(start = LARGE_PADDING),
                     text = stringResource(id = R.string.delete_all_action),
                     style = Typography.subtitle2
                 )

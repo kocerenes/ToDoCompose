@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.presentation.components.EmptyContent
-import com.enesk.todocompose.presentation.ui.theme.MEDIUM_PADDING
+import com.enesk.todocompose.presentation.ui.theme.LARGE_PADDING
 import com.enesk.todocompose.presentation.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.enesk.todocompose.presentation.ui.theme.TASK_ITEM_ELEVATION
 import com.enesk.todocompose.presentation.ui.theme.taskItemBackgroundColor
@@ -87,7 +87,7 @@ fun TaskItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(all = MEDIUM_PADDING)
+                .padding(all = LARGE_PADDING)
                 .fillMaxWidth()
         ) {
             Row {
