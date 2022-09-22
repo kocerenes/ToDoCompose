@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
+import com.enesk.todocompose.util.Action
 import com.enesk.todocompose.util.Constants.MAX_TITLE_LENGTH
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.RequestState
 import com.enesk.todocompose.util.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -20,6 +22,8 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
 ) : ViewModel() {
+
+    val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
 
     //values for update task
     val id: MutableState<Int> = mutableStateOf(0)
@@ -79,4 +83,39 @@ class SharedViewModel @Inject constructor(
     }
 
     fun validateFields() = title.value.isNotEmpty() && description.value.isNotEmpty()
+
+    private fun addTask() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val toDoTask = ToDoTaskEntity(
+                title = title.value,
+                description = description.value,
+                priority = priority.value
+            )
+            repository.addTask(toDoTaskEntity = toDoTask)
+        }
+    }
+
+    fun handleDatabaseActions(action: Action) {
+        when (action) {
+            Action.ADD -> {
+                addTask()
+            }
+            Action.UPDATE -> {
+
+            }
+            Action.DELETE -> {
+
+            }
+            Action.DELETE_ALL -> {
+
+            }
+            Action.UNDO -> {
+
+            }
+            else -> {
+
+            }
+        }
+        this.action.value = Action.NO_ACTION
+    }
 }
