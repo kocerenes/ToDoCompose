@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
+import com.enesk.todocompose.domain.use_case.add_task.AddTaskUseCase
 import com.enesk.todocompose.util.Action
 import com.enesk.todocompose.util.Constants.MAX_TITLE_LENGTH
 import com.enesk.todocompose.util.Priority
@@ -20,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val repository: ToDoRepository
+    private val repository: ToDoRepository,
+    private val addTaskUseCase: AddTaskUseCase
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
@@ -91,7 +93,7 @@ class SharedViewModel @Inject constructor(
                 description = description.value,
                 priority = priority.value
             )
-            repository.addTask(toDoTaskEntity = toDoTask)
+            addTaskUseCase(toDoTask = toDoTask)
         }
     }
 
