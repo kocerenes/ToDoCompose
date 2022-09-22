@@ -58,13 +58,13 @@ class SharedViewModel @Inject constructor(
         }
     }
 
-    fun updateTaskFields(selectedTask: ToDoTaskEntity?){
-        if (selectedTask != null){
+    fun updateTaskFields(selectedTask: ToDoTaskEntity?) {
+        if (selectedTask != null) {
             id.value = selectedTask.id
             title.value = selectedTask.title
             description.value = selectedTask.description
             priority.value = selectedTask.priority
-        }else{
+        } else {
             id.value = 0
             title.value = ""
             description.value = ""
@@ -72,10 +72,11 @@ class SharedViewModel @Inject constructor(
         }
     }
 
-    fun updateTitle(newTitle: String)
-    {
-        if(newTitle.length < MAX_TITLE_LENGTH){
+    fun updateTitle(newTitle: String) {
+        if (newTitle.length < MAX_TITLE_LENGTH) {
             title.value = newTitle
         }
     }
+
+    fun validateFields() = title.value.isNotEmpty() && description.value.isNotEmpty()
 }
