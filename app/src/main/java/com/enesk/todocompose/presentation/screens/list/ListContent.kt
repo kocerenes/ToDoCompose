@@ -29,22 +29,46 @@ import com.enesk.todocompose.presentation.ui.theme.taskItemBackgroundColor
 import com.enesk.todocompose.presentation.ui.theme.taskItemTextColor
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.RequestState
+import com.enesk.todocompose.util.SearchAppBarState
 
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
-    tasks: RequestState<List<ToDoTaskEntity>>,
+    allTasks: RequestState<List<ToDoTaskEntity>>,
+    searchedTasks: RequestState<List<ToDoTaskEntity>>,
+    searchAppBarState: SearchAppBarState,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks is RequestState.Success){
-        if (tasks.data.isEmpty()) {
-            EmptyContent()
-        } else {
-            DisplayTasks(
-                tasks = tasks.data,
+    if (searchAppBarState == SearchAppBarState.TRIGGERED) {
+        if (searchedTasks is RequestState.Success) {
+            HandleListContent(
+                tasks = searchedTasks.data,
                 navigateToTaskScreen = navigateToTaskScreen
             )
         }
+    }else {
+        if (allTasks is RequestState.Success) {
+            HandleListContent(
+                tasks = allTasks.data,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
+    }
+}
+
+@ExperimentalMaterialApi
+@Composable
+fun HandleListContent(
+    tasks: List<ToDoTaskEntity>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    if (tasks.isEmpty()) {
+        EmptyContent()
+    } else {
+        DisplayTasks(
+            tasks = tasks,
+            navigateToTaskScreen = navigateToTaskScreen
+        )
     }
 }
 

@@ -1,7 +1,6 @@
 package com.enesk.todocompose.presentation.screens.list
 
 import android.annotation.SuppressLint
-import androidx.annotation.StringRes
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -41,6 +40,7 @@ fun ListScreen(
     val action by sharedViewModel.action
 
     val allTasks by sharedViewModel.allTasks.collectAsState()
+    val searchedTasks by sharedViewModel.searchedTasks.collectAsState()
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
 
@@ -70,7 +70,9 @@ fun ListScreen(
         },
         content = {
             ListContent(
-                tasks = allTasks,
+                allTasks = allTasks,
+                searchedTasks = searchedTasks,
+                searchAppBarState = searchAppBarState,
                 navigateToTaskScreen = navigateToTaskScreen
             )
         },
