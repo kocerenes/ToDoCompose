@@ -3,7 +3,8 @@
 
     <!-- List Screen -->
     <string name="fab_button_description">ekleme butonu</string>
-    <string name="snack_bar_action_label">TAMAM</string>
+    <string name="snack_bar_action_label_ok">TAMAM</string>
+    <string name="snack_bar_action_label_undo">GERİ AL</string>
 
     <!-- Top App Bar -->
     <string name="top_app_bar_name">Görevler</string>
