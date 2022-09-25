@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.repository.ToDoRepository
 import com.enesk.todocompose.domain.use_case.add_task.AddTaskUseCase
+import com.enesk.todocompose.domain.use_case.delete_task.DeleteTaskUseCase
 import com.enesk.todocompose.domain.use_case.update_task.UpdateTaskUseCase
 import com.enesk.todocompose.util.Action
 import com.enesk.todocompose.util.Constants.MAX_TITLE_LENGTH
@@ -24,7 +25,8 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository,
     private val addTaskUseCase: AddTaskUseCase,
-    private val updateTaskUseCase: UpdateTaskUseCase
+    private val updateTaskUseCase: UpdateTaskUseCase,
+    private val deleteTaskUseCase: DeleteTaskUseCase
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
@@ -111,6 +113,18 @@ class SharedViewModel @Inject constructor(
         }
     }
 
+    private fun deleteTask() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val toDoTask = ToDoTaskEntity(
+                id = id.value,
+                title = title.value,
+                description = description.value,
+                priority = priority.value
+            )
+            deleteTaskUseCase(toDoTaskEntity = toDoTask)
+        }
+    }
+
     fun handleDatabaseActions(action: Action) {
         when (action) {
             Action.ADD -> {
@@ -120,7 +134,7 @@ class SharedViewModel @Inject constructor(
                 updateTask()
             }
             Action.DELETE -> {
-
+                deleteTask()
             }
             Action.DELETE_ALL -> {
 
