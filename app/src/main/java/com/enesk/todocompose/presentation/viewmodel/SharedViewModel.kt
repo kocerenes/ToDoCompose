@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
-import com.enesk.todocompose.domain.repository.ToDoRepository
 import com.enesk.todocompose.domain.use_case.add_task.AddTaskUseCase
 import com.enesk.todocompose.domain.use_case.delete_task.DeleteTaskUseCase
+import com.enesk.todocompose.domain.use_case.get_all_tasks.GetAllTasksUseCase
+import com.enesk.todocompose.domain.use_case.get_search_database.GetSearchDatabaseUseCase
+import com.enesk.todocompose.domain.use_case.get_selected_task.GetSelectedTaskUseCase
 import com.enesk.todocompose.domain.use_case.update_task.UpdateTaskUseCase
 import com.enesk.todocompose.util.Action
 import com.enesk.todocompose.util.Constants.MAX_TITLE_LENGTH
@@ -18,15 +20,19 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val repository: ToDoRepository,
     private val addTaskUseCase: AddTaskUseCase,
     private val updateTaskUseCase: UpdateTaskUseCase,
-    private val deleteTaskUseCase: DeleteTaskUseCase
+    private val deleteTaskUseCase: DeleteTaskUseCase,
+    private val getAllTasksUseCase: GetAllTasksUseCase,
+    private val getSelectedTaskUseCase: GetSelectedTaskUseCase,
+    private val getSearchDatabaseUseCase: GetSearchDatabaseUseCase
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
@@ -52,39 +58,44 @@ class SharedViewModel @Inject constructor(
     val selectedTask: StateFlow<ToDoTaskEntity?> = _selectedTask
 
     fun searchDatabase(searchQuery: String) {
-        _searchedTasks.value = RequestState.Loading
-        try {
-            viewModelScope.launch {
-                repository.searchDatabase(searchQuery = "%$searchQuery%")
-                    .collect { searchedTasks ->
-                        _searchedTasks.value = RequestState.Success(searchedTasks)
-                    }
+
+        getSearchDatabaseUseCase(searchQuery = searchQuery).onEach { result ->
+            when (result) {
+                is RequestState.Loading -> {
+                    _searchedTasks.value = result
+                }
+                is RequestState.Success -> {
+                    _searchedTasks.value = result
+                }
+                is RequestState.Error -> {
+                    _searchedTasks.value = result
+                }
             }
-        } catch (e: Exception) {
-            _searchedTasks.value = RequestState.Error(e)
-        }
+        }.launchIn(viewModelScope)
+
         searchAppBarState.value = SearchAppBarState.TRIGGERED
     }
 
     fun getAllTasks() {
-        _allTasks.value = RequestState.Loading
-        try {
-            viewModelScope.launch {
-                repository.getAllTasks.collect {
-                    _allTasks.value = RequestState.Success(it)
+        getAllTasksUseCase().onEach { result ->
+            when (result) {
+                is RequestState.Loading -> {
+                    _allTasks.value = result
+                }
+                is RequestState.Success -> {
+                    _allTasks.value = result
+                }
+                is RequestState.Error -> {
+                    _allTasks.value = result
                 }
             }
-        } catch (e: Exception) {
-            _allTasks.value = RequestState.Error(e)
-        }
+        }.launchIn(viewModelScope)
     }
 
     fun getSelectedTask(taskId: Int) {
-        viewModelScope.launch {
-            repository.getSelectedTask(taskId = taskId).collect {
-                _selectedTask.value = it
-            }
-        }
+        getSelectedTaskUseCase(taskId = taskId).onEach { selectedTask ->
+            _selectedTask.value = selectedTask
+        }.launchIn(viewModelScope)
     }
 
     fun updateTaskFields(selectedTask: ToDoTaskEntity?) {
@@ -157,13 +168,13 @@ class SharedViewModel @Inject constructor(
                 deleteTask()
             }
             Action.DELETE_ALL -> {
-
+                //no-action
             }
             Action.UNDO -> {
                 addTask()
             }
             else -> {
-
+                //no-action
             }
         }
         this.action.value = Action.NO_ACTION
