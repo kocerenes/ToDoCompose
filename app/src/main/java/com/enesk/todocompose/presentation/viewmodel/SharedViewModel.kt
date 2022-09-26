@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
 import com.enesk.todocompose.domain.use_case.add_task.AddTaskUseCase
+import com.enesk.todocompose.domain.use_case.delete_all_task.DeleteAllTaskUseCase
 import com.enesk.todocompose.domain.use_case.delete_task.DeleteTaskUseCase
 import com.enesk.todocompose.domain.use_case.get_all_tasks.GetAllTasksUseCase
 import com.enesk.todocompose.domain.use_case.get_search_database.GetSearchDatabaseUseCase
@@ -32,7 +33,8 @@ class SharedViewModel @Inject constructor(
     private val deleteTaskUseCase: DeleteTaskUseCase,
     private val getAllTasksUseCase: GetAllTasksUseCase,
     private val getSelectedTaskUseCase: GetSelectedTaskUseCase,
-    private val getSearchDatabaseUseCase: GetSearchDatabaseUseCase
+    private val getSearchDatabaseUseCase: GetSearchDatabaseUseCase,
+    private val deleteAllTaskUseCase: DeleteAllTaskUseCase
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
@@ -156,6 +158,12 @@ class SharedViewModel @Inject constructor(
         }
     }
 
+    private fun deleteAllTasks() {
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteAllTaskUseCase()
+        }
+    }
+
     fun handleDatabaseActions(action: Action) {
         when (action) {
             Action.ADD -> {
@@ -168,7 +176,7 @@ class SharedViewModel @Inject constructor(
                 deleteTask()
             }
             Action.DELETE_ALL -> {
-                //no-action
+                deleteAllTasks()
             }
             Action.UNDO -> {
                 addTask()
