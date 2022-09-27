@@ -137,7 +137,7 @@ fun ExistingTaskAppBarActions(
         ),
         openDialog = openDialog,
         closeDialog = { openDialog = false },
-        onYesDialog = {
+        onYesClicked = {
             navigateToListScreen(Action.DELETE)
         }
     )

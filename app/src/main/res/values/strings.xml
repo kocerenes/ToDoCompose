@@ -34,11 +34,13 @@
     <string name="description_text_field_label">Açıklama</string>
     <string name="fields_empty_toast_message">Boş Bırakılan Alanları Doldurunuz.</string>
 
-    <!-- New Task Screen -->
+    <!-- Alert Dialog Single Delete -->
     <string name="alert_dialog_confirm_button">Evet</string>
     <string name="alert_dialog_dismiss_button">Hayır</string>
     <string name="alert_dialog_delete_title">Sil \'%1$s\'?</string>
     <string name="alert_dialog_delete_message">Silmek istediğinizden emin misiniz \'%1$s\'?</string>
 
-
+    <!-- Alert Dialog All Delete -->
+    <string name="alert_dialog_all_delete_title">Tüm görevler silinsin mi?</string>
+    <string name="alert_dialog_all_delete_message">Tüm Görevleri kaldırmak istediğinizden emin misiniz? Bu işlemden sonra geri dönüş yoktur.</string>
 </resources>

@@ -40,4 +40,8 @@
     <string name="alert_dialog_dismiss_button">No</string>
     <string name="alert_dialog_delete_title">Remove \'%1$s\'?</string>
     <string name="alert_dialog_delete_message">Are you sure you want to remove \'%1$s\'?</string>
+
+    <!-- Alert Dialog All Delete -->
+    <string name="alert_dialog_all_delete_title">Remove All Tasks?</string>
+    <string name="alert_dialog_all_delete_message">Are you sure you want to remove all Tasks? There is no going back after this action.</string>
 </resources>

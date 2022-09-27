@@ -22,7 +22,7 @@ fun DisplayAlertdialog(
     message: String,
     openDialog: Boolean,
     closeDialog: () -> Unit,
-    onYesDialog: () -> Unit
+    onYesClicked: () -> Unit
 ) {
     if (openDialog) {
         AlertDialog(
@@ -43,7 +43,7 @@ fun DisplayAlertdialog(
             confirmButton = {
                 Button(
                     onClick = {
-                        onYesDialog()
+                        onYesClicked()
                         closeDialog()
                     },
                     border = BorderStroke(
