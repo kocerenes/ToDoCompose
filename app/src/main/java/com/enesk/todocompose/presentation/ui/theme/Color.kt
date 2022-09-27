@@ -40,6 +40,18 @@ val Colors.topAppBarContentColor: Color
     @Composable
     get() = if (isLight) Color.White else LightGray
 
+val Colors.AlertDialogOutlineButtonsColor: Color
+    @Composable
+    get() = if (isLight) AppColor else LightGray
+
+val Colors.AlertDialogButtonsColor: Color
+    @Composable
+    get() = if (isLight) AppColor else DarkGray
+
+val Colors.AlertDialogButtonTextColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else LightGray
+
 val Colors.topAppBarBackgroundColor: Color
     @Composable
     get() = if (isLight) AppColor else Color.Black

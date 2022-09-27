@@ -29,9 +29,15 @@
     <string name="delete_icon_description">Delete icon</string>
     <string name="update_icon_description">Update icon</string>
 
-    <!-- New Task Screen -->
+    <!-- Display Alert Dialog -->
     <string name="drop_down_arrow_icon_description">Drop-Down Arrow Icon</string>
     <string name="title_text_field_label">Title</string>
     <string name="description_text_field_label">Description</string>
     <string name="fields_empty_toast_message">Fields Empty.</string>
+
+    <!-- New Task Screen -->
+    <string name="alert_dialog_confirm_button">Yes</string>
+    <string name="alert_dialog_dismiss_button">No</string>
+    <string name="alert_dialog_delete_title">Remove \'%1$s\'?</string>
+    <string name="alert_dialog_delete_message">Are you sure you want to remove \'%1$s\'?</string>
 </resources>

@@ -33,4 +33,12 @@
     <string name="title_text_field_label">Başlık</string>
     <string name="description_text_field_label">Açıklama</string>
     <string name="fields_empty_toast_message">Boş Bırakılan Alanları Doldurunuz.</string>
+
+    <!-- New Task Screen -->
+    <string name="alert_dialog_confirm_button">Evet</string>
+    <string name="alert_dialog_dismiss_button">Hayır</string>
+    <string name="alert_dialog_delete_title">Sil \'%1$s\'?</string>
+    <string name="alert_dialog_delete_message">Silmek istediğinizden emin misiniz \'%1$s\'?</string>
+
+
 </resources>

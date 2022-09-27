@@ -28,3 +28,5 @@ val TOP_APP_BAR_HEIGHT = 56.dp //for material design best used
 val TASK_ITEM_ELEVATION = 2.dp
 
 val PRIORITY_DROP_DOWN_HEIGHT = 60.dp
+
+val OUTLINED_TEXT_BUTTON_BORDER = 1.dp
