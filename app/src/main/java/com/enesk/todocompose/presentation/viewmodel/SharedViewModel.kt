@@ -18,7 +18,6 @@ import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.RequestState
 import com.enesk.todocompose.util.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -122,46 +121,39 @@ class SharedViewModel @Inject constructor(
 
     fun validateFields() = title.value.isNotEmpty() && description.value.isNotEmpty()
 
-    private fun addTask() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val toDoTask = ToDoTaskEntity(
-                title = title.value,
-                description = description.value,
-                priority = priority.value
-            )
-            addTaskUseCase(toDoTask = toDoTask)
-        }
+    private fun addTask() = viewModelScope.launch {
+        val toDoTask = ToDoTaskEntity(
+            title = title.value,
+            description = description.value,
+            priority = priority.value
+        )
+        addTaskUseCase(toDoTask = toDoTask)
+
         searchAppBarState.value = SearchAppBarState.CLOSED
     }
 
-    private fun updateTask() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val toDoTask = ToDoTaskEntity(
-                id = id.value,
-                title = title.value,
-                description = description.value,
-                priority = priority.value
-            )
-            updateTaskUseCase(toDoTask = toDoTask)
-        }
+    private fun updateTask() = viewModelScope.launch {
+        val toDoTask = ToDoTaskEntity(
+            id = id.value,
+            title = title.value,
+            description = description.value,
+            priority = priority.value
+        )
+        updateTaskUseCase(toDoTask = toDoTask)
     }
 
-    private fun deleteTask() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val toDoTask = ToDoTaskEntity(
-                id = id.value,
-                title = title.value,
-                description = description.value,
-                priority = priority.value
-            )
-            deleteTaskUseCase(toDoTaskEntity = toDoTask)
-        }
+    private fun deleteTask() = viewModelScope.launch {
+        val toDoTask = ToDoTaskEntity(
+            id = id.value,
+            title = title.value,
+            description = description.value,
+            priority = priority.value
+        )
+        deleteTaskUseCase(toDoTaskEntity = toDoTask)
     }
 
-    private fun deleteAllTasks() {
-        viewModelScope.launch(Dispatchers.IO) {
-            deleteAllTaskUseCase()
-        }
+    private fun deleteAllTasks() = viewModelScope.launch {
+        deleteAllTaskUseCase()
     }
 
     fun handleDatabaseActions(action: Action) {
