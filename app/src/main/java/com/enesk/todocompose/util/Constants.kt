@@ -15,4 +15,8 @@ object Constants {
 
     //limitation
     const val MAX_TITLE_LENGTH = 20
+
+    //DataStore
+    const val PREFERENCE_NAME = "todo_preferences"
+    const val PREFERENCE_KEY = "sort_state"
 }

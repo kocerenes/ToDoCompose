@@ -1,5 +1,10 @@
 package com.enesk.todocompose.util
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+
 fun String?.toAction(): Action {
     return when {
         this == "ADD" -> {
@@ -22,3 +27,5 @@ fun String?.toAction(): Action {
         }
     }
 }
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.PREFERENCE_NAME)

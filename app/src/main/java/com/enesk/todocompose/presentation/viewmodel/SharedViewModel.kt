@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
+import com.enesk.todocompose.data.repository.DataStoreRepository
 import com.enesk.todocompose.domain.use_case.add_task.AddTaskUseCase
 import com.enesk.todocompose.domain.use_case.delete_all_task.DeleteAllTaskUseCase
 import com.enesk.todocompose.domain.use_case.delete_task.DeleteTaskUseCase
@@ -33,7 +34,8 @@ class SharedViewModel @Inject constructor(
     private val getAllTasksUseCase: GetAllTasksUseCase,
     private val getSelectedTaskUseCase: GetSelectedTaskUseCase,
     private val getSearchDatabaseUseCase: GetSearchDatabaseUseCase,
-    private val deleteAllTaskUseCase: DeleteAllTaskUseCase
+    private val deleteAllTaskUseCase: DeleteAllTaskUseCase,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
