@@ -43,4 +43,7 @@
     <!-- Alert Dialog All Delete -->
     <string name="alert_dialog_all_delete_title">Tüm görevler silinsin mi?</string>
     <string name="alert_dialog_all_delete_message">Tüm Görevleri kaldırmak istediğinizden emin misiniz? Bu işlemden sonra geri dönüş yoktur.</string>
+
+    <!-- Splash Screen -->
+    <string name="todo_logo_description">Görev Logosu</string>
 </resources>

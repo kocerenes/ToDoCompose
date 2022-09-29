@@ -44,4 +44,7 @@
     <!-- Alert Dialog All Delete -->
     <string name="alert_dialog_all_delete_title">Remove All Tasks?</string>
     <string name="alert_dialog_all_delete_message">Are you sure you want to remove all Tasks? There is no going back after this action.</string>
+
+    <!-- Splash Screen -->
+    <string name="todo_logo_description">To-Do Logo</string>
 </resources>

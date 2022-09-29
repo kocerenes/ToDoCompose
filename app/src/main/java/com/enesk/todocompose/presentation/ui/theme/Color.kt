@@ -56,3 +56,7 @@ val Colors.topAppBarBackgroundColor: Color
     @Composable
     get() = if (isLight) AppColor else Color.Black
 
+val Colors.splashScreenBackgroundColor: Color
+    @Composable
+    get() = if (isLight) AppColor else Color.Black
+
