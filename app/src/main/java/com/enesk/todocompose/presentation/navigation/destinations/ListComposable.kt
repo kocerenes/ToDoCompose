@@ -1,6 +1,5 @@
 package com.enesk.todocompose.presentation.navigation.destinations
 
-import android.util.Log
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
