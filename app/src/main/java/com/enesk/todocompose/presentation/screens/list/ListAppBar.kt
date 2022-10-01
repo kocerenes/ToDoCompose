@@ -46,7 +46,6 @@ import com.enesk.todocompose.presentation.viewmodel.SharedViewModel
 import com.enesk.todocompose.util.Action
 import com.enesk.todocompose.util.Priority
 import com.enesk.todocompose.util.SearchAppBarState
-import com.enesk.todocompose.util.TrailingIconState
 
 @Composable
 fun ListAppBar(
@@ -256,10 +255,6 @@ fun SearchAppBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit
 ) {
-    var trailingIconState by remember {
-        mutableStateOf(TrailingIconState.READY_TO_DELETE)
-    }
-
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -303,23 +298,10 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        when (trailingIconState) {
-                            TrailingIconState.READY_TO_DELETE -> {
-                                if (text.isEmpty()) {
-                                    onCloseClicked()
-                                } else {
-                                    onTextChange("")
-                                    trailingIconState = TrailingIconState.READY_TO_CLOSE
-                                }
-                            }
-                            TrailingIconState.READY_TO_CLOSE -> {
-                                if (text.isNotEmpty()) {
-                                    onTextChange("")
-                                } else {
-                                    onCloseClicked()
-                                    trailingIconState = TrailingIconState.READY_TO_DELETE
-                                }
-                            }
+                        if (text.isNotEmpty()) {
+                            onTextChange("")
+                        } else {
+                            onCloseClicked()
                         }
                     }
                 ) {
