@@ -2,6 +2,7 @@ package com.enesk.todocompose.presentation.navigation.destinations
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -26,11 +27,14 @@ fun NavGraphBuilder.listComposable(
 
         val action = navBackStackEntry.arguments?.getString(LIST_ARGUMENT_KEY).toAction()
 
+        val databaseAction by sharedViewModel.action
+
         LaunchedEffect(key1 = action) {
             sharedViewModel.action.value = action
         }
 
         ListScreen(
+            action = databaseAction,
             navigateToTaskScreen = navigateToTaskScreen,
             sharedViewModel = sharedViewModel
         )

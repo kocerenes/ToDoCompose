@@ -1,5 +1,6 @@
 package com.enesk.todocompose.presentation.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -202,6 +203,7 @@ class SharedViewModel @Inject constructor(
     }
 
     fun handleDatabaseActions(action: Action) {
+        Log.d("shared", "Triggered")
         when (action) {
             Action.ADD -> {
                 addTask()
@@ -222,6 +224,5 @@ class SharedViewModel @Inject constructor(
                 //no-action
             }
         }
-        this.action.value = Action.NO_ACTION
     }
 }
