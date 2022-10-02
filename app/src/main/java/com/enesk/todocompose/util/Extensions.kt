@@ -6,7 +6,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 
 fun String?.toAction(): Action {
-    return when {
+    return if (this.isNullOrEmpty()) Action.NO_ACTION else Action.valueOf(this)
+
+    //does the same job as above
+    /*return when {
         this == "ADD" -> {
             Action.ADD
         }
@@ -25,7 +28,7 @@ fun String?.toAction(): Action {
         else -> {
             Action.NO_ACTION
         }
-    }
+    }*/
 }
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.PREFERENCE_NAME)
