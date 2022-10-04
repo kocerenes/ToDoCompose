@@ -33,12 +33,12 @@ fun NavGraphBuilder.listComposable(
 
         var myAction by rememberSaveable { mutableStateOf(Action.NO_ACTION) }
 
-        val databaseAction by sharedViewModel.action
+        val databaseAction = sharedViewModel.action
 
         LaunchedEffect(key1 = myAction) {
             if (action != myAction) {
                 myAction = action
-                sharedViewModel.action.value = action
+                sharedViewModel.updateAction(newAction = action)
             }
         }
 

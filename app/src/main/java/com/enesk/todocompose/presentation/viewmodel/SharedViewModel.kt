@@ -1,8 +1,9 @@
 package com.enesk.todocompose.presentation.viewmodel
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enesk.todocompose.data.local.entity.ToDoTaskEntity
@@ -45,17 +46,23 @@ class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
 ) : ViewModel() {
 
-    val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
+    var action by mutableStateOf(Action.NO_ACTION)
+        private set
 
     //values for update task
-    val id: MutableState<Int> = mutableStateOf(0)
-    val title: MutableState<String> = mutableStateOf("")
-    val description: MutableState<String> = mutableStateOf("")
-    val priority: MutableState<Priority> = mutableStateOf(Priority.LOW)
+    var id by mutableStateOf(0)
+        private set
+    var title by mutableStateOf("")
+        private set
+    var description by mutableStateOf("")
+        private set
+    var priority by mutableStateOf(Priority.LOW)
+        private set
 
-    val searchAppBarState: MutableState<SearchAppBarState> =
-        mutableStateOf(SearchAppBarState.CLOSED)
-    val searchTextState: MutableState<String> = mutableStateOf("")
+    var searchAppBarState by mutableStateOf(SearchAppBarState.CLOSED)
+        private set
+    var searchTextState by mutableStateOf("")
+        private set
 
     private val _allTasks = MutableStateFlow<RequestState<List<ToDoTaskEntity>>>(RequestState.Idle)
     val allTasks: StateFlow<RequestState<List<ToDoTaskEntity>>> = _allTasks
@@ -125,7 +132,7 @@ class SharedViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
 
-        searchAppBarState.value = SearchAppBarState.TRIGGERED
+        searchAppBarState = SearchAppBarState.TRIGGERED
     }
 
     private fun getAllTasks() {
@@ -152,53 +159,53 @@ class SharedViewModel @Inject constructor(
 
     fun updateTaskFields(selectedTask: ToDoTaskEntity?) {
         if (selectedTask != null) {
-            id.value = selectedTask.id
-            title.value = selectedTask.title
-            description.value = selectedTask.description
-            priority.value = selectedTask.priority
+            id = selectedTask.id
+            title = selectedTask.title
+            description = selectedTask.description
+            priority = selectedTask.priority
         } else {
-            id.value = 0
-            title.value = ""
-            description.value = ""
-            priority.value = Priority.LOW
+            id = 0
+            title = ""
+            description = ""
+            priority = Priority.LOW
         }
     }
 
     fun updateTitle(newTitle: String) {
         if (newTitle.length < MAX_TITLE_LENGTH) {
-            title.value = newTitle
+            title = newTitle
         }
     }
 
-    fun validateFields() = title.value.isNotEmpty() && description.value.isNotEmpty()
+    fun validateFields() = title.isNotEmpty() && description.isNotEmpty()
 
     private fun addTask() = viewModelScope.launch {
         val toDoTask = ToDoTaskEntity(
-            title = title.value,
-            description = description.value,
-            priority = priority.value
+            title = title,
+            description = description,
+            priority = priority
         )
         addTaskUseCase(toDoTask = toDoTask)
 
-        searchAppBarState.value = SearchAppBarState.CLOSED
+        searchAppBarState = SearchAppBarState.CLOSED
     }
 
     private fun updateTask() = viewModelScope.launch {
         val toDoTask = ToDoTaskEntity(
-            id = id.value,
-            title = title.value,
-            description = description.value,
-            priority = priority.value
+            id = id,
+            title = title,
+            description = description,
+            priority = priority
         )
         updateTaskUseCase(toDoTask = toDoTask)
     }
 
     private fun deleteTask() = viewModelScope.launch {
         val toDoTask = ToDoTaskEntity(
-            id = id.value,
-            title = title.value,
-            description = description.value,
-            priority = priority.value
+            id = id,
+            title = title,
+            description = description,
+            priority = priority
         )
         deleteTaskUseCase(toDoTaskEntity = toDoTask)
     }
@@ -229,5 +236,25 @@ class SharedViewModel @Inject constructor(
                 //no-action
             }
         }
+    }
+
+    fun updateAction(newAction: Action) {
+        action = newAction
+    }
+
+    fun updateDescription(newDescription: String) {
+        description = newDescription
+    }
+
+    fun updatePriority(newPriority: Priority) {
+        priority = newPriority
+    }
+
+    fun updateAppBarState(newState: SearchAppBarState) {
+        searchAppBarState = newState
+    }
+
+    fun updateSearchText(newText: String) {
+        searchTextState = newText
     }
 }
