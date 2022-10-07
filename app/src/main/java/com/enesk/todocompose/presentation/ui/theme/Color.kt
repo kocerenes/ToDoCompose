@@ -60,3 +60,7 @@ val Colors.splashScreenBackgroundColor: Color
     @Composable
     get() = if (isLight) AppColor else Color.Black
 
+val Colors.TaskContentColor: Color
+    @Composable
+    get() = if (isLight) AppColor else MediumGray
+
