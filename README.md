@@ -12,7 +12,7 @@ A handy application where the user can write and sort their daily tasks by impor
 
 ## Features 🕹
 --------------
-- 100% Kotlin-only template
+- 100% Kotlin-only
 - Following MVVM Architectural Design Pattern
 - Dark theme
 - Multi-Languages
